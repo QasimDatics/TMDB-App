@@ -1,7 +1,8 @@
-package com.example.tmdbapps
+package com.example.tmdbapps.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.tmdbapps.R
 
 class MainActivity : AppCompatActivity() {
 
