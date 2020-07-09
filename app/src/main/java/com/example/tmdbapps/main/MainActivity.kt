@@ -35,6 +35,9 @@ class MainActivity : AppCompatActivity() ,MainView{
         }
         adapter=MainAdapter(movies){
             startActivity<DetailActivity>()
+            "TITLE" to it.title
+            "POSTER" to it.poster
+            "OVERVIEW" to it.overview
 
         }
         listMovie.adapter=adapter

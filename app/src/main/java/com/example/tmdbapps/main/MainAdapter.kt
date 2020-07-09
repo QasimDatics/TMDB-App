@@ -1,5 +1,6 @@
 package com.example.tmdbapps.main
 
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -58,6 +59,7 @@ class MovieViewHolder(view: View):RecyclerView.ViewHolder(view){
     private val movieTitle:TextView=view.find(movie_title)
     fun bindItem(movies:Movie, listener: (Movie) -> Unit){
         Picasso.get().load(URL_POSTER + movies.poster).into(moviePoster)
+        Log.d("GAMBAR", "url = "+ URL_POSTER+movies.poster)
         movieTitle.text=movies.title
 
         moviePoster.onClick {
