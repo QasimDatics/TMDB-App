@@ -8,6 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tmdbapps.BuildConfig.URL_POSTER
 import com.example.tmdbapps.R
+import com.example.tmdbapps.R.id.movie_poster
+import com.example.tmdbapps.R.id.movie_title
 import com.example.tmdbapps.model.Movie
 import com.squareup.picasso.Picasso
 import org.jetbrains.anko.*
@@ -17,12 +19,13 @@ import java.util.*
 
 class MainAdapter(private val result: List<Movie>, private val listener: (Movie)->Unit):RecyclerView.Adapter<MovieViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
+        return MovieViewHolder(MovieUi().createView(AnkoContext.create(parent.context,parent)))
     }
 
-    override fun getItemCount(): Int {
-    }
+    override fun getItemCount(): Int =result.size
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
+        holder.bindItem(result[position],listener)
     }
 
 }
