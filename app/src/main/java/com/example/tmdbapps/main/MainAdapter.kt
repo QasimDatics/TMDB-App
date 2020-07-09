@@ -39,7 +39,7 @@ class MovieUi:AnkoComponent<ViewGroup>{
                 imageView{
                     id = R.id.movie_poster
                 }.lparams{
-                    height=dip(250)
+                    height=dip(200)
                     width= wrapContent
                 }
                 textView{

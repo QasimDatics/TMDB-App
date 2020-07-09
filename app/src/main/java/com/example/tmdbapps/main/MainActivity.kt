@@ -6,7 +6,10 @@ import android.widget.LinearLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tmdbapps.R
+import com.example.tmdbapps.detail.DetailActivity
 import com.example.tmdbapps.model.Movie
+import com.example.tmdbapps.network.ApiRepository
+import com.google.gson.Gson
 import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
 
@@ -30,9 +33,19 @@ class MainActivity : AppCompatActivity() ,MainView{
                 layoutManager=GridLayoutManager(ctx,2)
             }
         }
+        adapter=MainAdapter(movies){
+            startActivity<DetailActivity>()
+
+        }
+        listMovie.adapter=adapter
+        presenter= MainPresenter(this, ApiRepository(), Gson())
+        presenter.getMovieList()
     }
 
+
     override fun showMovieList(data: List<Movie>) {
-        TODO("Not yet implemented")
+        movies.clear()
+        movies.addAll(data)
+        adapter.notifyDataSetChanged()
     }
 }
