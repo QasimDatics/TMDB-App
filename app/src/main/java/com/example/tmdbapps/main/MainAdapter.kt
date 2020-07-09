@@ -2,10 +2,17 @@ package com.example.tmdbapps.main
 
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.tmdbapps.BuildConfig.URL_POSTER
+import com.example.tmdbapps.R
 import com.example.tmdbapps.model.Movie
-import org.jetbrains.anko.AnkoComponent
-import org.jetbrains.anko.AnkoContext
+import com.squareup.picasso.Picasso
+import org.jetbrains.anko.*
+import org.jetbrains.anko.sdk27.coroutines.onClick
+import java.net.URL
 import java.util.*
 
 class MainAdapter(private val result: List<Movie>, private val listener: (Movie)->Unit):RecyclerView.Adapter<MovieViewHolder>() {
@@ -22,12 +29,37 @@ class MainAdapter(private val result: List<Movie>, private val listener: (Movie)
 class MovieUi:AnkoComponent<ViewGroup>{
     override fun createView(ui: AnkoContext<ViewGroup>): View {
         return with(ui){
+            linearLayout{
+                lparams(width= matchParent, height = wrapContent)
+                padding=dip(5)
+                orientation=LinearLayout.VERTICAL
+                imageView{
+                    id = R.id.movie_poster
+                }.lparams{
+                    height=dip(250)
+                    width= wrapContent
+                }
+                textView{
+                    id=R.id.movie_title
+                    textSize=16f
+                }.lparams{
+                    margin=dip(16)
+                }
+            }
 
         }
     }
 }
 class MovieViewHolder(view: View):RecyclerView.ViewHolder(view){
+    private val moviePoster:ImageView=view.find(movie_poster)
+    private val movieTitle:TextView=view.find(movie_title)
     fun bindItem(movies:Movie, listener: (Movie) -> Unit){
+        Picasso.get().load(URL_POSTER + movies.poster).into(moviePoster)
+        movieTitle.text=movies.title
+
+        moviePoster.onClick {
+            listener(movies)
+        }
 
     }
 }
