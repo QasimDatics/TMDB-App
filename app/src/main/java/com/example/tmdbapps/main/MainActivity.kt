@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() ,MainView{
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
         linearLayout{
             lparams(width= matchParent, height = wrapContent)
@@ -34,10 +35,12 @@ class MainActivity : AppCompatActivity() ,MainView{
             }
         }
         adapter=MainAdapter(movies){
-            startActivity<DetailActivity>()
-            "TITLE" to it.title
-            "POSTER" to it.poster
-            "OVERVIEW" to it.overview
+            startActivity<DetailActivity>(
+                "TITLE" to it.title,
+                "POSTER" to it.poster,
+                "OVERVIEW" to it.overview
+            )
+
 
         }
         listMovie.adapter=adapter
