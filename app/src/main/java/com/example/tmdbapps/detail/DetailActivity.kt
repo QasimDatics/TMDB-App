@@ -36,7 +36,7 @@ class DetailActivity : AppCompatActivity() {
             }.lparams{
                 width=dip(250)
                 gravity=Gravity.CENTER
-                height=dip(250)
+                height=dip(200)
             }
             title=textView()
             overview=textView()
