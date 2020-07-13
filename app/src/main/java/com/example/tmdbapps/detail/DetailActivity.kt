@@ -25,7 +25,7 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+/*
         linearLayout{
             lparams(width= matchParent,height = wrapContent)
             orientation=LinearLayout.VERTICAL
@@ -41,7 +41,7 @@ class DetailActivity : AppCompatActivity() {
             title=textView()
             overview=textView()
 
-        }
+        }*/
         val i=intent
         titleMovie = i.getStringExtra("TITLE")
         overviewMovie = i.getStringExtra("OVERVIEW")
