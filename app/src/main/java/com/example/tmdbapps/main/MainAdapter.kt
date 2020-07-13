@@ -55,6 +55,7 @@ class MovieUi:AnkoComponent<ViewGroup>{
     }
 }
 class MovieViewHolder(view: View):RecyclerView.ViewHolder(view){
+    private val moviePoster:ImageView=view.find(movie_poster)
     private val movieTitle:TextView=view.find(movie_title)
     fun bindItem(movies:Movie, listener: (Movie) -> Unit){
         Picasso.get().load(URL_POSTER + movies.poster).into(moviePoster)
