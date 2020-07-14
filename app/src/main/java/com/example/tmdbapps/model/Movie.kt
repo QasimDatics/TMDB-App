@@ -7,5 +7,5 @@ data class Movie (
     val id:String,
     val title:String,
     val overview:String,
-    @SerializedName("poster_path")
+    @SerializedName("poster_path") var poster:String
 )
