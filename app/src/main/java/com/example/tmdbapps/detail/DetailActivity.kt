@@ -26,22 +26,7 @@ class DetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        linearLayout{
-            lparams(width= matchParent,height = wrapContent)
-            orientation=LinearLayout.VERTICAL
-            padding=dip(16)
 
-            poster=imageView{
-
-            }.lparams{
-                width=dip(250)
-                gravity=Gravity.CENTER
-                height=dip(200)
-            }
-            title=textView()
-            overview=textView()
-
-        }
         val i=intent
         titleMovie = i.getStringExtra("TITLE")
         overviewMovie = i.getStringExtra("OVERVIEW")
