@@ -62,6 +62,9 @@ class MovieViewHolder(view: View):RecyclerView.ViewHolder(view){
         Log.d("GAMBAR", "url = "+ URL_POSTER+movies.poster)
         movieTitle.text=movies.title
 
+        moviePoster.onClick {
+            listener(movies)
+        }
 
     }
 }
